@@ -12,7 +12,7 @@ public class Zones : MonoBehaviour
         bool isPlayer = other.CompareTag("Player");
         bool isMob = other.CompareTag("Mob");
 
-        if (isPlayer || isMob)
+        if (isPlayer)
         {
             ChangePosition(other, spawnPoint);
             SetFallSpeed(other, Vector2.zero);
