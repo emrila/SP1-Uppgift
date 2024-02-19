@@ -13,6 +13,13 @@ TagManager:
   - Pineapple
   - Checkpoint
   - Foreground
+<<<<<<< Updated upstream
+=======
+  - BadCherry
+  - Cherry
+  - Melon
+  - Background
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

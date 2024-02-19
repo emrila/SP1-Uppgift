@@ -13,8 +13,12 @@ public class MobMove : MonoBehaviour
 
     private SpriteRenderer rend;
     private Animator anim;
+<<<<<<< Updated upstream
    // private bool isGrounded = true;
 
+=======
+    private AudioSource mobAudio;
+>>>>>>> Stashed changes
 
 
     void Start()
@@ -23,14 +27,12 @@ public class MobMove : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     void Update()
     {
         CheckSpriteDirection();
 
-        anim.SetFloat("MobSpeed", Mathf.Abs(movementSpeed));
+        anim.SetFloat("MovementSpeed", Mathf.Abs(movementSpeed));
     }
-
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -57,7 +59,6 @@ public class MobMove : MonoBehaviour
 
         }
     }
-
 
     private void FixedUpdate()
     {
@@ -88,7 +89,23 @@ public class MobMove : MonoBehaviour
         {
             Rigidbody2D playerBody = other.GetComponent<Rigidbody2D>();
             playerBody.velocity = new Vector2(playerBody.velocity.x, 0);
+<<<<<<< Updated upstream
             playerBody.AddForce(new Vector2(0, bounciness));
+=======
+            playerBody.AddForce(new Vector2(0, bounciness*4));
+
+            mobAudio.PlayOneShot(mobKillSound, 0.2f);
+            Destroy(GetComponent<CapsuleCollider2D>());
+
+            movementSpeed = 0;
+            rend.flipY = true;
+
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bounciness*2));
+            Instantiate(mobKillParticle, transform.position, Quaternion.identity);
+            Instantiate(mobDrop, transform.position, Quaternion.identity);
+           
+            Destroy(gameObject, 0.25f);
+>>>>>>> Stashed changes
 
             Destroy(gameObject);
         }

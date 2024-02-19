@@ -6,21 +6,33 @@ using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 1f;
-    [SerializeField] private float jumpHeight = 300f;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float jumpHeight;
 
     [SerializeField] private Transform leftFoot, rightFoot;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private LayerMask whatIsGround;
 
+<<<<<<< Updated upstream
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Image fillColor;
     [SerializeField] private TMP_Text appleText;
+=======
+    [SerializeField] private GameObject cherryParticle, pineappeParticles, melonParticle, jumpParticles;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Image fillColor;
+    [SerializeField] private TMP_Text questText;
+>>>>>>> Stashed changes
 
-    [SerializeField] AudioClip jumpSound, pickUpSound;
+    [SerializeField] AudioClip jumpSound, cherrySound, melonSound, pineappleSound, badCherrySound;
 
     private float horizontalValue;
+<<<<<<< Updated upstream
     private float rayDistance = 0.25f;
+=======
+    private float rayDistance;
+    
+>>>>>>> Stashed changes
 
     private Rigidbody2D playerBody;
     private SpriteRenderer rend;
@@ -28,10 +40,21 @@ public class PlayerMove : MonoBehaviour
     private AudioSource playerSounds;
 
     private bool canMove;
+<<<<<<< Updated upstream
 
     private int startingHealth = 5;
     private int currentHealth;
     public int appleCounter;
+=======
+    private bool hasPowerUp = false;
+
+    private int startingHealth = 5;
+    private int currentHealth;
+    public int cherryCounter;
+    private int powerUpCountdown = 500;
+    private int powerUpTimeRemaining;
+
+>>>>>>> Stashed changes
 
     void Start()
     {
@@ -42,6 +65,17 @@ public class PlayerMove : MonoBehaviour
 
         canMove = true;
         currentHealth = startingHealth;
+<<<<<<< Updated upstream
+=======
+        playerSounds.volume = 0.2f;
+        rayDistance = 0.25f;
+
+        currentHealth = PlayerDataContainer.GetPlayerHealth();
+        UpdateHealthSlider();
+
+        transform.position = spawnPoint.position;
+       
+>>>>>>> Stashed changes
     }
 
     void Update()
@@ -66,8 +100,20 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
+<<<<<<< Updated upstream
         playerBody.velocity = new Vector2(horizontalValue * movementSpeed, playerBody.velocity.y);
 
+=======
+        if (powerUpTimeRemaining > 0 && hasPowerUp)
+        {
+            powerUpTimeRemaining--;
+
+        }
+        if (powerUpTimeRemaining == 0 && hasPowerUp)
+        {
+            RemovePowerUp();
+        }
+>>>>>>> Stashed changes
     }
 
     private void CheckSpriteDirection()
@@ -133,19 +179,23 @@ public class PlayerMove : MonoBehaviour
 
         playerBody.AddForce(new Vector2(knockbackForce, upwards));
 
-        Invoke("CanMoveAgain", 0.25f);
+        Invoke(nameof(CanMoveAgain), 0.25f);
 
     }
     private void CanMoveAgain()
     {
         canMove = true;
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     private void Respawn()
     {
         currentHealth = startingHealth;
 
         UpdateHealthSlider();
-
+        RemovePowerUp();
         transform.position = spawnPoint.position;
         playerBody.velocity = Vector2.zero;
     }
@@ -160,7 +210,6 @@ public class PlayerMove : MonoBehaviour
 
             fillColor.color = Color.yellow;
         }
-      
         else
         {
             fillColor.color = Color.red;
@@ -168,22 +217,66 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+<<<<<<< Updated upstream
+=======
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Vector3 playerPosition = new(transform.position.x, transform.position.y, transform.position.z+1);
+
+            Instantiate(jumpParticles, playerPosition, Quaternion.identity);
+
+        }
+    }
+
+>>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Apple"))
         {
             Destroy(other.gameObject);
+<<<<<<< Updated upstream
             playerSounds.PlayOneShot(pickUpSound, 0.2f);
+=======
+            Instantiate(cherryParticle, other.transform.position, Quaternion.identity);
+            playerSounds.PlayOneShot(cherrySound, 0.2f);
+>>>>>>> Stashed changes
 
-            appleCounter++;
-            appleText.text = "" + appleCounter;
+            cherryCounter++;
+            questText.text = "" + cherryCounter;
         }
 
+<<<<<<< Updated upstream
+=======
+        if (other.CompareTag("BadCherry"))
+        {
+            Destroy(other.gameObject);
+            Instantiate(jumpParticles, other.transform.position, Quaternion.identity);
+            TakeDamage(1);
+            RemovePowerUp();
+            
+            playerSounds.PlayOneShot(badCherrySound, 0.2f);
+        }
+
+        if (other.CompareTag("Melon"))
+        {
+
+            Destroy(other.gameObject);
+            Instantiate(melonParticle, other.transform.position, Quaternion.identity);
+            GivePowerUp();
+
+            playerSounds.PlayOneShot(melonSound, 0.2f);
+           
+        }
+
+>>>>>>> Stashed changes
         if (other.CompareTag("Pineapple"))
         {
 
-            if (currentHealth == startingHealth)
+            if (currentHealth < startingHealth)
             {
+<<<<<<< Updated upstream
                 return;
             }
 
@@ -195,5 +288,48 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+=======
+                Destroy(other.gameObject);
+                Instantiate(pineappeParticles, other.transform.position, Quaternion.identity);
+
+                currentHealth++;
+                UpdateHealthSlider();
+
+                playerSounds.PlayOneShot(pineappleSound, 0.2f);
+
+            }
+
+
+        }
+        
+    }
+  
+    private void GivePowerUp()
+    {
+        if(powerUpCountdown != 0) {
+
+            RemovePowerUp();
+        }
+        powerUpTimeRemaining = powerUpCountdown;
+        movementSpeed *= 2f;
+        hasPowerUp = true;
+    }
+
+    private void RemovePowerUp()
+    {
+        if (hasPowerUp) {
+            powerUpTimeRemaining = 0;
+            movementSpeed *= 0.5f;
+            hasPowerUp = false;
+        }
+        
+    }
+
+    public void UpdatePlayerStats()
+    {
+        PlayerDataContainer.SetPlayerHealth(currentHealth);
+        PlayerDataContainer.SetPowerUp(hasPowerUp);
+    }
+>>>>>>> Stashed changes
 
 }

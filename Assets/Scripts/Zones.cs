@@ -6,7 +6,10 @@ public class Zones : MonoBehaviour
 {
 
     [SerializeField] Transform spawnPoint;
+    [SerializeField] GameObject transition;
+    [SerializeField] AudioClip playerDeadSound;
 
+    private Collider2D target;
     private void OnTriggerEnter2D(Collider2D other)
     {
         bool isPlayer = other.CompareTag("Player");
@@ -14,19 +17,19 @@ public class Zones : MonoBehaviour
 
         if (isPlayer)
         {
-            ChangePosition(other, spawnPoint);
-            SetFallSpeed(other, Vector2.zero);
-          
+            target = other;
+            transition.GetComponent<Animator>().SetTrigger("TransitionOut");
+            GetComponent<AudioSource>().PlayOneShot(playerDeadSound, 0.2f);
+            Invoke(nameof(MoveToSpawn), 0.5f);
+       
+            transition.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
     }
 
-    private void ChangePosition(Collider2D target, Transform spawnHere)
+    private void MoveToSpawn()
     {
-        target.transform.position = spawnHere.position;
-    }
+        target.transform.position = spawnPoint.position;
+        target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-    private void SetFallSpeed(Collider2D target, Vector2 speed)
-    {
-        target.GetComponent<Rigidbody2D>().velocity = speed;
     }
 }

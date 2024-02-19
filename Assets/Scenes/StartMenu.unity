@@ -450,8 +450,8 @@ Camera:
   m_GameObject: {fileID: 294654514}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.02055892, g: 0.09327657, b: 0.20754719, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.22352943, g: 0.79215693, b: 0.9176471, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1461,7 +1461,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 978759868}
   m_Father: {fileID: 760920107}
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VeryBerry
+  m_text: VeryCherry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e711cdcbaa104bc782b69e9dcff147d, type: 2}
   m_sharedMaterial: {fileID: 4016193422083262336, guid: 2e711cdcbaa104bc782b69e9dcff147d, type: 2}
@@ -2035,7 +2035,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1088472578}
   m_Father: {fileID: 760920107}

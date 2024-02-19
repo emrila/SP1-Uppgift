@@ -94,8 +94,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.84, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7109702014445940867}
   - {fileID: 8782090020674850319}
@@ -248,20 +248,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669ea4eef1f9543dbbbe2c92b06a85f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2.5
-  jumpHeight: 350
+  movementSpeed: 2.8
+  jumpHeight: 380
   leftFoot: {fileID: 7109702014445940867}
   rightFoot: {fileID: 8782090020674850319}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1988151356396763614, guid: 88290c1785701448e9ec0e01c4b1121c, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+<<<<<<< Updated upstream
   healthSlider: {fileID: 0}
   fillColor: {fileID: 0}
   appleText: {fileID: 0}
   jumpSound: {fileID: 0}
   pickUpSound: {fileID: 0}
   appleCounter: 0
+=======
+  cherryParticle: {fileID: 6757365441913568448, guid: 786ce233d161c4abb9ce8c42e53950dd, type: 3}
+  pineappeParticles: {fileID: 6757365441913568448, guid: 888a0cf41a8344627a6235504e9891b8, type: 3}
+  melonParticle: {fileID: 6757365441913568448, guid: 59632cd8dec8e469599127bb3db285f2, type: 3}
+  jumpParticles: {fileID: 6757365441913568448, guid: 5f48cc9312e2641448d5caa388cb32ca, type: 3}
+  healthSlider: {fileID: 7263934367771893715, guid: af3876a023eca46ee9580222c2a8edfb, type: 3}
+  fillColor: {fileID: 0}
+  questText: {fileID: 3867926465401194564, guid: 8ebc22947b9094b1e813b73d1d9e07fa, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2920a93bfdbf14e8881e3559bcb537f0, type: 3}
+  cherrySound: {fileID: 8300000, guid: 7aeb6b8e41fd14e29b5e640f0d9a0431, type: 3}
+  melonSound: {fileID: 8300000, guid: 9e5b2552b2a444c0481f8edd58854470, type: 3}
+  pineappleSound: {fileID: 8300000, guid: f21880c07f46c4694afae6332296c99e, type: 3}
+  badCherrySound: {fileID: 8300000, guid: 66ea69f715a194b1c9f5df90f491fa36, type: 3}
+  cherryCounter: 0
+>>>>>>> Stashed changes
 --- !u!82 &6853894859512398923
 AudioSource:
   m_ObjectHideFlags: 0

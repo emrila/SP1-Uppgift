@@ -5,20 +5,29 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
 
+
+    private Collider2D target;
     [SerializeField] private float jumpForce = 200f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Mob"))
         {
-            Rigidbody2D playerBody = other.GetComponent<Rigidbody2D>();
+            target = other;
 
-            playerBody.velocity = new Vector2(playerBody.velocity.x, 0);
-
-            playerBody.AddForce(new Vector2(0, jumpForce));
-
-            GetComponent<Animator>().SetTrigger("Jump");
+            Invoke(nameof(Jump), 0.1f);
 
         }
+    }
+
+    private void Jump()
+    {
+        Rigidbody2D body = target.GetComponent<Rigidbody2D>();
+
+        body.velocity = new Vector2(body.velocity.x, 0);
+
+        body.AddForce(new Vector2(0, jumpForce));
+
+        GetComponent<Animator>().SetTrigger("Jump");
     }
 }

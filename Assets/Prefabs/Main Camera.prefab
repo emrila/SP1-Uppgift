@@ -68,7 +68,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -105,6 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01a005089b2412d890b73b71355636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1425675692095244870, guid: 8f8bd243486fd4c689b6235a686a7317, type: 3}
   offset: {x: 3, y: 2, z: -9}
   smooting: 2

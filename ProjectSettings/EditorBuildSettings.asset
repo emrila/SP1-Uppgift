@@ -9,12 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: bbb8f17df6f3f4b4baa187769fc80857
   - enabled: 1
-    path: Assets/Scenes/Level_1_Day.unity
-    guid: ec5e8767e44284ca1b9839d45b775621
+    path: Assets/Scenes/Level 1.unity
+    guid: ff99ab563783e40dabd7b412269e3005
   - enabled: 1
-    path: Assets/Scenes/Level_2_Night.unity
-    guid: 4bfab704e334747a8b5375ba943b5f59
+    path: Assets/Scenes/Level 2.unity
+    guid: 698a7042dfad2490db5fba4dcc1024b6
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/Level_3_Dawn.unity
     guid: 4151d1dcae7fc44f4a1f8573c686b82d
   - enabled: 1
@@ -23,4 +24,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 204ca90836e7e498abfea36d59e7e376
+=======
+    path: Assets/Scenes/Level 3.unity
+    guid: adf1c09f2a4d14b0d95f002134dd73b9
+>>>>>>> Stashed changes
   m_configObjects: {}
